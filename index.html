@@ -1,0 +1,574 @@
+<!DOCTYPE HTML>
+<!--
+	Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Samy Mannane</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="logo">
+							<!--span class="icon fa-gem"></span>-->
+							<span class="image fit"><img src="images/site_pp.png" alt="" /></span>
+						</div>
+						<div class="content">
+							<div class="inner">
+								<h1>Samy's projects</h1>
+								<p>Hey, it's Samy ! I'm a 23 years old graduate engineer in Computer Graphics. I worked at Epic Games, on Fortnite. <br />
+								I love art, cinema, animation, 3D programming and create beautiful pictures. <br />
+								<br>Here, you can find visuals of my projects.</p>
+							</div>
+						</div>
+						<nav>
+							<ul>
+								<li><a href="#ue4">Unreal Engine 4 game projects</a></li>
+							</ul>
+						</nav>
+						<nav>
+								<ul>
+								<li><a href="#maya">Maya scene / Arnold rendering</a></li>
+							</ul>
+						</nav>
+						<nav>
+								<ul>
+								<li><a href="#ae">After Effects / Video compositing</a></li>
+							</ul>
+						</nav>	
+						<nav>
+								<ul>
+								<li><a href="#raytracing">Ray tracing algorithm</a></li>
+							</ul>
+						</nav>
+
+						<nav>
+							<ul>
+									<li><a href="#contact">Contact</a></li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- UE4 -->
+							<article id="ue4">
+								<h2 class="major">Game projects made with <br/>Unreal Engine 4</h2>
+								<nav>
+										<ul>
+											<li><a href="#yozora">Yozora (demo, personal project)</a></li>
+											<span class="image main"><img src="images/Launcher.gif" alt="" /></span>
+										</ul>
+									</nav>
+									<nav>
+											<ul>
+											<li><a href="#codet">Code T (student work)</a></li>
+											<span class="image main"><img src="images/codet1.png" alt="" /></span>
+										</ul>
+									</nav>
+							</article>
+
+							<article id="yozora">
+								<h2 class="major">Yozora demo</h2>
+								<video controls width="520">
+										<source src="video/SneakPeek.mp4" type="video/mp4">
+								</video>
+								<p>Here is probably my biggest personal projects: <strong>Yozora demo.</strong> <br />
+								This is an <strong>Unreal Engine 4 C++ project</strong> I did myself. You can download it and try it yourself from <a href="https://drive.google.com/open?id=1ADCERmMmSG3Tu6TgSYdV6uvYcAzE-iuL">here.</a></p>
+								I have modelled, skinned, textured the main character, written all the game mechanics of the character and AI in C++, setting up a targetting system inspired by Dark Souls / Bloodborne (or even Kingdom Hearts), setting up the Animation Blueprints, work on sounds, agencing the test map level design and all the UI work and bindings.
+								<span class="image main"><img src="images/lock.gif"/></span>
+
+								The main gameplay feature is the use of "Basic Hits" and "Special Hits", which are 2 different types of attack. Special Hit are not available at start, and are unlocked when the player is doing combo and is increasing its Hit Counter. <br/>
+								When Hit Counter reach a multiple of 2, level 1 Special Hit is increased by 1 and damages are multiplied; when Hit Counter reach a multiple of 4, level 2 Special Hit increased by 1 and damages are multiplied; when Hit Counter reach a multiple of 6, level 3 Special Hit increased by 1, and damages are multiplied. <br/>
+								Enemies can usually be damaged only by a predefinied Special Hits level, this is the interest of this mechanic. For example, if an enemy can be damaged by a level 2 Special Hit, the player can only use its limited
+								level 2 or higher Special Hits. Lower Hits with result in no damage but will still increase Hit Counter so Special Hits could still be unlocked using the previous-described method. <br/>
+								<strong>Special Hits are ressources, like ammo in a shooter game !</strong> But you'll have to play well to unlock them. <br/>
+								In order to always keep the player focused and in the action, there is another way of increasing the Hit Counter. 
+								When enemy is attacking, the player can try to block this attack, and the blocking is performed during the correct timing, Hit Counter will increase ! <br/>
+
+								<h3>The character</h3>
+								
+								First, the movements are "futuristic" movements based on a teleportation look. By teleportation look, I mean a sudden dash in a direction with trail and the character turning invisible to create kind of a speed effect. 
+								<span class="image main"><img src="images/dash.gif" alt="" /></span>
+								This requires to cast a ray each time the player request to "Dash" or a "Dodge" (which is working on the same principle). <br/> <br />
+								For example, the dodge implies maths calculation like doing the dot product between the normalized velocity vector and the direction vector, determined by the player's input. <br />
+								If input direction vector has a greater value on the actor's forward vector than on its right vector, that means the player wants to move along the character's X-axis.
+								If input indicates a forward direction and the scalar product described before is positive, that means dodge should be a forward dodge. If scalar product is negative, then it's a backward dodge. 
+								And the same process goes for right and left dodge. <br />
+								This is only an example of one feature for the character, and the sample of code is available on my GitHub.
+								<br /><br />
+								The combat system constently switched between 2 types of attacks, doing 2 differents sequences of actions based on the player input.
+								One thing I tried to take a special care of is the "feeling" when player is attacking. <br />
+								Indeed, when attacking the is slown down by reduced the time dilation of the Unreal world. During this short window of time, I add the impact effect on the enemy, a particle system following the direction of the blade and trails to the whole character body so we can feel our character is very powerful. <br />
+								(I think I was inspired by fighting games, especially "Street Fighter 4" because I remembered being surprising of this split second of freeze when a character hitted or was hitted. Anyway...). <br/>
+								The same kind of system is set up when blocking an attack. If an attack is block, the camera is offsetted, the time is slowed and a particle system spawns, showing the impact.
+								<span class="image main"><img src="images/attack.gif" alt="" /></span>
+								
+								The aspect is inspired by the "Homo ludens" from Kojima Productions,  by the character of Emile in the game "Halo: Reach" and by diverse cyberpunk art.<br />
+								<span class="image main"><img src="images/corridor.png" alt="" /></span>
+
+								<h3>Enemy's AI</h3>
+								
+								The main enemy type is a soldier enemy. The logic is once again fully wirtten in C++. <br />
+								This AI (or more precisely the AI Controller class) is using Unreal's Perception component to detect the player within a range I fixed. <br />
+								If the player is not detected, then AI will move between points inside the nav mesh. <br />
+								As soon the player is detected, a stimuli is sent to the Perception component of the AI Controller and the AI is ready to fight. I set the AI's Rotation matrix to always face the player (so yes, each tick). Then, if the player is far, then AI will fire a projectile. 
+								But the player will have to come closer. If the distance between AI and player is under a treshold, then I use a random int variable to choose what action to do next: 1/5 to fire a projectile and 4/5 to do a physical attack. Again, there 4 different physical attack and the selected one is determined by the random int variable.
+								If the player runs away, the stimuli is lost but the last known position of the player is registered. The AI will go to this location and if there is no new stimuli, then the AI will go back to its initial points (yes, this part needs a big improvement but it was okay for my purpose).
+								<br /><br />
+								The look I was looking for for the AI basic solider is a soldier fed by a lot of wires coming from everywhere, very inspired by Akira or Ghost in the Shell but I can't really reach what I wanted so I made a little structure made of wires in Maya. I skinned, UVed and added this structure to the AI soldier through the Master Pose Component system of Unreal.
+								<br />
+								This is only for the enemy soldier, not the "Samurai Boss" which has a totally different moveset and logic.<br />
+								<br />
+								<h3>Post Process effects</h3>
+								
+								The main post process effect is the very glowy aspect on lights. It is an anamorphic flare that is exagerated. I really flares in movies for example, so I really wanted to give this aspect to my game.
+								
+								There is also color correction and color grading.<br />
+								<span class="image main"><img src="images/anamorphic.png" alt="" /></span>
+								<br />
+								<h3>My thoughts on this project</h3>
+								
+								I could keep working on it, maybe one day. I have few other levels ready, very cyberpunk themed. <br />
+								Overall, I learned a lot though this personal project. First, the all pipeline artists follow when working in Maya either for modelling or animation, and then sending their work to Unreal. 
+								I could use my C++ skills and I think I made something pretty well optimized, especially with the use of timelines. I think my internship at Epic Games helped me a lot to produce an optimized code.
+								The overall look is satisfying and I wish I had the time to work on assets I have in mind...or was helped by a real CG artist !
+								<br />But finally, I think the gameplay is pretty good if you take 15 minutes to understand where I wanted to go.
+								<br />Indeed, the difficulty can be scaled very easily, by setting the enemy's minimal level of Hits required to beat it or by switching this level in real-time during a fight. Also, the gameplay rewards the player who is active during the fight and has the good timing with parrying. 
+								I think you can always know why you died, and if you are concentrated on timings, you can understand what to do and how to beat enemies. I really wanted to get as close as possible to Dark Souls combat system. 
+								<br />I hope it worked !							
+							</article>
+								</p>
+							</article>
+
+							<article id="codet">
+								<h2 class="major">Code T</h2>
+								<h3>Code T for temporal</h3>
+								<p>
+									This is a school project made with Unreal Engine 4. Most of the game mechanics are made using <strong>Unreal blueprints.</strong> <br />
+									The idea behind the "temporal" is a gameplay idea. The character can <strong>switch between times.</strong> <br /> 
+									There is its original time, in a medieval environment. The player uses a bow to defeat the enemies and reach the end of the level, so arrows are the first ressource. <br />
+									<span class="image main"><img src="images/codet.jpg" alt="" /></span>
+									But when the player is facing an obstacle which cannot be  passed, it has the ability to go to the future of this exact same environment, at the exact same position, but with a limited time.
+									The level design is a bit different and the player can continue. <br />
+									But the time in this future environment is limited to few seconds, so this precious seconds are the second important ressource that shouldn't be wasted.
+									<span class="image main"><img src="images/codet4.png" alt="" /></span>
+									
+									Using Unreal blueprints, we created the bow and its descending trajectory and the time switching mechanics. <br/>
+
+									<h3>Post Process "paint" effect</h3>
+									We decided to give a special appearance to the game by creating a "paint filter" through a post process material. <br />
+									The principle of this material is, for each pixel, to get the square grid surrounding the pixel (usually a 3*3 or 5*5 grid depending on the effect intensity we are looking for). <br />
+									Then, we are calculating the mean of all these pixel, which gives us a unique color. Finally, we are applying this color to the initial selected pixel. 
+									<span class="image main"><img src="images/codet3.png" alt="" /></span>
+								</p>
+							</article>
+
+						<!-- Maya -->
+							<article id="maya">
+								<h2 class="major">Maya scene creation / <br />Arnold rendering</h2>
+								<span class="image main"><img src="images/Snapshot_1.png" alt="" /></span>
+								<p>
+									<h3>Maya scene "Dreamlike deer"</h3>
+
+									This is a scene I made in <strong>Maya.</strong> This is a way to express my artistic vision. <br>
+									I wanted to create a poetic scene. Grass was generated using <strong>Xgen</strong>. The compositing, color choice, lightings (with an important work on the lights, volumetric lights and light shafts) and texturing are made by me.
+									<br>
+									This is rendered with <strong>Arnold</strong>.
+									<br />
+									<br />
+									<video controls width="520">
+										    <source src="video/DeerScene.mp4" type="video/mp4">
+									</video>
+								</p>
+							</article>
+
+						<!-- After Effects -->
+							<article id="ae">
+								<h2 class="major">After Effects tracking / <br />Unreal Engine 4 compositing / <br />Premiere Pro editing</h2>
+								<video controls width="520">
+										<source src="video/AlleyCompositing.mp4" type="video/mp4">
+								</video>
+								<p>
+																		
+									I am a huge cinema fan and my dream has always been to express myself through movie directing. Unfortunately, I can't really do it but as a hobby I tried few things. <br>
+									<br>
+									First, I took a video sequence made with my iPhone X, shot in 4k at 24 fps. <br>
+									In After Effects, I have to do the <strong>camera tracking</strong> which gives me, for each frame of the video, a transform vector of the virtual camera position in a 3D world space. 
+									This tracking is made by generating <strong>points of interest</strong> in each frame, which are usually points where we can observe a heavy change in the pixel environment, giving us a lot of trackable information. 
+									I also created locators on points where I wanted to add a 3D object during compositing, so it will match the movement of the video relatively to the distance to camera. <br>
+									(The problem comes on video sequences with a lot of camera movements, where the same points can't be tracked on each frame of the video, as they can disapeared with movement. 
+									To solve that, we can use planar tracking solutions but this is not really the subject here.) <br>
+									My camera track is now ready to export in Cinema4D/<strong>Maya</strong>, so I have now a 3D camera track on a timeline that I can export as an .fbx. <br>
+									My idea here was to use <strong>Unreal Engine 4 to do compositing</strong> and a first render as it's really fast to get a previz video through the Unreal Sequencer. <br/>
+									When importing a camera track in Unreal, we can't import the locators at the same time, so the scale is usually not matching and it's hard to figure out how to perfectly scale them relatively to this new Unreal camera. 
+									The workaround I found is to mesure the distance between camera and locators inside of Maya, and scale them from position (0, 0, 0) in Unreal until the distance is matching the distance calculated in Maya. 
+									This way, I'm sure the scale of my Unreal 3D scene matches the scale of the After Effects 3D scene where the tracking was made. <br/>
+									<br>
+									I can now use compositing tools to place my 3D objects and animations inside Unreal and blend them with the video.
+									<br>
+									The final edit is made in Premiere Pro where I can do color correction and color grading to give to each sequence its own atmoshpere.
+
+								</p>
+							</article>
+
+						<!-- Contact -->
+							<article id="contact">
+								<h2 class="major">Contact</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<p><br />
+											 	CV / resume: 
+											<br />
+											 	Email: <a href="samy.mannane@gmail.com">samy.mannane@gmail.com</a></p>
+									</div>
+								</form>
+								<ul class="icons">
+									<li><a href="https://www.linkedin.com/in/samy-mannane-22741213b/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/samyez" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</article>
+
+						<!-- Elements -->
+							<article id="raytracing">
+								<h2 class="major">Ray tracing algorithm /<br/>Global illumination</h2>
+
+								<h3>Ray tracing main principle</h3>
+								<p>
+									I have worked on a ray tracing algorithm along with a school project, in order to understand how it works and implement it in C++. <br />
+									<br />
+									The princple of the ray tracing algorithm implemented here is as follows: <br />
+									We want to cast a light ray (or multiple light rays) per pixel of the screen, in the 3D scene. In the first and most simple version, we are calculating the intersection of a ray with each polygon of each object in the scene.
+									If an intersection is found, we know where our current ray hitted and we can calculate the intersection of the next ray. <br/>
+									With all those calculations of intersections, we are trying to determinate the color of the pixel. This color is defined by the material applied on the intersected face of the 3D object. <br />
+									This color is determined by the famous Rendering equation. <br />
+									<br />
+									Let's take a simple scene with 2 light sources and 2 cubes with a red diffuse material. The diffuse component is calculating as follows:<br />
+									<br/>
+									<code>
+										I(diffuse) = k(d) * I(light) * (n.l) <br/>
+										<br />
+										where: <br />
+										k(d) = diffuse component of the material <br/>
+										I(light) = light source color <br />
+										n = polygon's normal (vector) <br />
+										l = vector between light source and intersection point (vector) <br />
+									</code>
+									<br />
+									We are sending one ray per pixel, in direct light, no bounce. <br />
+									This means each light source will either produce a colored pixel if the ray hitted something, or black one, resulting in a shadow. 
+									Since we have 2 light sources in a different position, we can have shades of grey for the shadow. <br />
+									Here is what we get when applying this principle:
+									<span class="image main"><img src="images/si1.png" alt="" /></span>
+
+									Let's continue by changing the scene a bit: the walls are now mirors (specular component), which implies to work on the specular component. The specular component is calculating as follows:<br />
+									<br/>
+									<code>
+										I(specular) = k(s) * I(light) * ((v.r)^n(shiny)) <br/>
+										<br />
+										where: <br />
+										k(d) = specular component of the material <br/>
+										I(light) = light source color <br />
+										v = distance between light source and intersection point (vector) <br />
+										l = relfected ray (vector) <br />
+										n(shiny) = coefficient of shininess intensity (the visibile reflection on the material) <br />
+									</code>
+									<br />
+									Specular direct lighting is calculated by doing the scalar product between the incident vector (between light source and impact point on object)
+									and the reflected vector. Let's make sure we don't have a negative value for this scalar product, so we know we are in the right hemisphere. <br />
+									In order to get better result, we will now add indirect lighting and start talking about <strong>Global illumination</strong>: it's the specular reflections in the ideal direction. We are now calculating recursively n bounces for each ray casted per pixel. <br />
+									Here is the result in the exact same scene: 
+									<span class="image main"><img src="images/si2.png" alt="" /></span>
+
+									As we are now in Global illumination, we are taking in consideration direct lighting and indirect lighting. We can try to change light sources colors (a cyan and an orange light) to see the contribution of each one in the scene shading. Here is the result: 
+									<span class="image main"><img src="images/si5.png" alt="" /></span>
+
+									You might now have understand how the algorithm works, so I will skip the work on the others components used in the Rendering equation.
+								</p>
+
+								<h3>Accelerate calculations with a BVH structure</h3>
+
+								We can ask ourselves: is there a way to avoid of the intersections calculations since we are interacting with only one polygon of the 3D object ? <br />
+								Indeed, we have to avoid them because they represent almost 100% of useless calculations. <br />
+								For this purpose, we can implement a BVH (for Bounding Volume Hierarchy). Instead of casting a ray in the entire bounding box surrounding our scene, let's sudivied the scene first.
+								We are recursively dividing the 3D space into smaller boxes, until a box contains a little amount of polygons. <br />
+								Now, when casting a ray, we can simply check in which smaller box it is progressing until it hit something. Since we know the polygons inside a specifique box, 
+								we can calculate only intersection between the ray and these few polygons, and we will find our final intersection. <br />
+								<br />
+								Let's an example to illustrate that. In a scene containing 22,251 polygons, I tried to calculate a render pass <underline>without</underline> the BVH structure. <br/>
+								The time needed to render one pass is 350.33 seconds, here is the result:
+								<span class="image main"><img src="images/si3.png" alt="" /></span>
+
+								Now, with the BVH structure, the time needed to render one pass is 0.77 second ! We have speed up the process by 450 ! 
+								<span class="image main"><img src="images/si4.png" alt="" /></span>
+
+							<!--	<section>
+									<h3 class="major">Text</h3>
+									<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
+									This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
+									This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
+									<hr />
+									<h2>Heading Level 2</h2>
+									<h3>Heading Level 3</h3>
+									<h4>Heading Level 4</h4>
+									<h5>Heading Level 5</h5>
+									<h6>Heading Level 6</h6>
+									<hr />
+									<h4>Blockquote</h4>
+									<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
+									<h4>Preformatted</h4>
+									<pre><code>i = 0;
+
+while (!deck.isInOrder()) {
+    print 'Iteration ' + i;
+    deck.shuffle();
+    i++;
+}
+
+print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
+								</section>
+
+								<section>
+									<h3 class="major">Lists</h3>
+
+									<h4>Unordered</h4>
+									<ul>
+										<li>Dolor pulvinar etiam.</li>
+										<li>Sagittis adipiscing.</li>
+										<li>Felis enim feugiat.</li>
+									</ul>
+
+									<h4>Alternate</h4>
+									<ul class="alt">
+										<li>Dolor pulvinar etiam.</li>
+										<li>Sagittis adipiscing.</li>
+										<li>Felis enim feugiat.</li>
+									</ul>
+
+									<h4>Ordered</h4>
+									<ol>
+										<li>Dolor pulvinar etiam.</li>
+										<li>Etiam vel felis viverra.</li>
+										<li>Felis enim feugiat.</li>
+										<li>Dolor pulvinar etiam.</li>
+										<li>Etiam vel felis lorem.</li>
+										<li>Felis enim et feugiat.</li>
+									</ol>
+									<h4>Icons</h4>
+									<ul class="icons">
+										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+									</ul>
+
+									<h4>Actions</h4>
+									<ul class="actions">
+										<li><a href="#" class="button primary">Default</a></li>
+										<li><a href="#" class="button">Default</a></li>
+									</ul>
+									<ul class="actions stacked">
+										<li><a href="#" class="button primary">Default</a></li>
+										<li><a href="#" class="button">Default</a></li>
+									</ul>
+								</section>
+
+								<section>
+									<h3 class="major">Table</h3>
+									<h4>Default</h4>
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Name</th>
+													<th>Description</th>
+													<th>Price</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Item One</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Two</td>
+													<td>Vis ac commodo adipiscing arcu aliquet.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Three</td>
+													<td> Morbi faucibus arcu accumsan lorem.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Four</td>
+													<td>Vitae integer tempus condimentum.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Five</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+											</tbody>
+											<tfoot>
+												<tr>
+													<td colspan="2"></td>
+													<td>100.00</td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+
+									<h4>Alternate</h4>
+									<div class="table-wrapper">
+										<table class="alt">
+											<thead>
+												<tr>
+													<th>Name</th>
+													<th>Description</th>
+													<th>Price</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Item One</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Two</td>
+													<td>Vis ac commodo adipiscing arcu aliquet.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Three</td>
+													<td> Morbi faucibus arcu accumsan lorem.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Four</td>
+													<td>Vitae integer tempus condimentum.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Five</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+											</tbody>
+											<tfoot>
+												<tr>
+													<td colspan="2"></td>
+													<td>100.00</td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+								</section>
+
+								<section>
+									<h3 class="major">Buttons</h3>
+									<ul class="actions">
+										<li><a href="#" class="button primary">Primary</a></li>
+										<li><a href="#" class="button">Default</a></li>
+									</ul>
+									<ul class="actions">
+										<li><a href="#" class="button">Default</a></li>
+										<li><a href="#" class="button small">Small</a></li>
+									</ul>
+									<ul class="actions">
+										<li><a href="#" class="button primary icon solid fa-download">Icon</a></li>
+										<li><a href="#" class="button icon solid fa-download">Icon</a></li>
+									</ul>
+									<ul class="actions">
+										<li><span class="button primary disabled">Disabled</span></li>
+										<li><span class="button disabled">Disabled</span></li>
+									</ul>
+								</section>
+
+								<section>
+									<h3 class="major">Form</h3>
+									<form method="post" action="#">
+										<div class="fields">
+											<div class="field half">
+												<label for="demo-name">Name</label>
+												<input type="text" name="demo-name" id="demo-name" value="" placeholder="Jane Doe" />
+											</div>
+											<div class="field half">
+												<label for="demo-email">Email</label>
+												<input type="email" name="demo-email" id="demo-email" value="" placeholder="jane@untitled.tld" />
+											</div>
+											<div class="field">
+												<label for="demo-category">Category</label>
+												<select name="demo-category" id="demo-category">
+													<option value="">-</option>
+													<option value="1">Manufacturing</option>
+													<option value="1">Shipping</option>
+													<option value="1">Administration</option>
+													<option value="1">Human Resources</option>
+												</select>
+											</div>
+											<div class="field half">
+												<input type="radio" id="demo-priority-low" name="demo-priority" checked>
+												<label for="demo-priority-low">Low</label>
+											</div>
+											<div class="field half">
+												<input type="radio" id="demo-priority-high" name="demo-priority">
+												<label for="demo-priority-high">High</label>
+											</div>
+											<div class="field half">
+												<input type="checkbox" id="demo-copy" name="demo-copy">
+												<label for="demo-copy">Email me a copy</label>
+											</div>
+											<div class="field half">
+												<input type="checkbox" id="demo-human" name="demo-human" checked>
+												<label for="demo-human">Not a robot</label>
+											</div>
+											<div class="field">
+												<label for="demo-message">Message</label>
+												<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
+											</div>
+										</div>
+										<ul class="actions">
+											<li><input type="submit" value="Send Message" class="primary" /></li>
+											<li><input type="reset" value="Reset" /></li>
+										</ul>
+									</form>
+								</section> -->
+
+							</article>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy; Samy Mannane. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
