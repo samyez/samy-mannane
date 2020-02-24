@@ -43,7 +43,7 @@
 						</nav>
 						<nav>
 								<ul>
-								<li><a href="#ae">After Effects / Video compositing</a></li>
+								<li><a href="#ae">3D video compositing / After Effects</a></li>
 							</ul>
 						</nav>	
 						<nav>
@@ -215,31 +215,49 @@
 
 						<!-- After Effects -->
 							<article id="ae">
-								<h2 class="major">After Effects tracking / <br />Unreal Engine 4 compositing / <br />Premiere Pro editing</h2>
-								<video controls width="520">
-										<source src="video/AlleyCompositing.mp4" type="video/mp4">
-								</video>
-								<p>
-																		
-									I am a huge cinema fan and my dream has always been to express myself through movie directing. Unfortunately, I can't really do it but as a hobby I tried few things. <br>
-									<br>
-									First, I took a video sequence made with my iPhone X, shot in 4k at 24 fps. <br>
-									In After Effects, I have to do the <strong>camera tracking</strong> which gives me, for each frame of the video, a transform vector of the virtual camera position in a 3D world space. 
-									This tracking is made by generating <strong>points of interest</strong> in each frame, which are usually points where we can observe a heavy change in the pixel environment, giving us a lot of trackable information. 
-									I also created locators on points where I wanted to add a 3D object during compositing, so it will match the movement of the video relatively to the distance to camera. <br>
-									(The problem comes on video sequences with a lot of camera movements, where the same points can't be tracked on each frame of the video, as they can disapeared with movement. 
-									To solve that, we can use planar tracking solutions but this is not really the subject here.) <br>
-									My camera track is now ready to export in Cinema4D/<strong>Maya</strong>, so I have now a 3D camera track on a timeline that I can export as an .fbx. <br>
-									My idea here was to use <strong>Unreal Engine 4 to do compositing</strong> and a first render as it's really fast to get a previz video through the Unreal Sequencer. <br/>
-									When importing a camera track in Unreal, we can't import the locators at the same time, so the scale is usually not matching and it's hard to figure out how to perfectly scale them relatively to this new Unreal camera. 
-									The workaround I found is to mesure the distance between camera and locators inside of Maya, and scale them from position (0, 0, 0) in Unreal until the distance is matching the distance calculated in Maya. 
-									This way, I'm sure the scale of my Unreal 3D scene matches the scale of the After Effects 3D scene where the tracking was made. <br/>
-									<br>
-									I can now use compositing tools to place my 3D objects and animations inside Unreal and blend them with the video.
-									<br>
-									The final edit is made in Premiere Pro where I can do color correction and color grading to give to each sequence its own atmoshpere.
-
-								</p>
+								<ul class="alt">
+									<li>
+										<h2 class="major">1. After Effects tracking / <br/>Unreal Engine 4 compositing </h2>
+										<video controls width="520">
+												<source src="video/AlleyCompositing.mp4" type="video/mp4">
+										</video>
+										<p>
+																				
+											I am a huge cinema fan and my dream has always been to express myself through movie directing. Unfortunately, I can't really do it but as a hobby I tried few things. <br>
+											<br>
+											First, I took a video sequence made with my iPhone X, shot in 4k at 24 fps. <br>
+											In After Effects, I have to do the <strong>camera tracking</strong> which gives me, for each frame of the video, a transform vector of the virtual camera position in a 3D world space. 
+											This tracking is made by generating <strong>points of interest</strong> in each frame, which are usually points where we can observe a heavy change in the pixel environment, giving us a lot of trackable information. 
+											I also created locators on points where I wanted to add a 3D object during compositing, so it will match the movement of the video relatively to the distance to camera. <br>
+											(The problem comes on video sequences with a lot of camera movements, where the same points can't be tracked on each frame of the video, as they can disapeared with movement. 
+											To solve that, we can use planar tracking solutions but this is not really the subject here.) <br>
+											My camera track is now ready to export in Cinema4D/<strong>Maya</strong>, so I have now a 3D camera track on a timeline that I can export as an .fbx. <br>
+											My idea here was to use <strong>Unreal Engine 4 to do compositing</strong> and a first render as it's really fast to get a previz video through the Unreal Sequencer. <br/>
+											When importing a camera track in Unreal, we can't import the locators at the same time, so the scale is usually not matching and it's hard to figure out how to perfectly scale them relatively to this new Unreal camera. 
+											The workaround I found is to mesure the distance between camera and locators inside of Maya, and scale them from position (0, 0, 0) in Unreal until the distance is matching the distance calculated in Maya. 
+											This way, I'm sure the scale of my Unreal 3D scene matches the scale of the After Effects 3D scene where the tracking was made. <br/>
+											<br>
+											I can now use compositing tools to place my 3D objects and animations inside Unreal and blend them with the video.
+											<br>
+											The final edit is made in Premiere Pro where I can do color correction and color grading to give to each sequence its own atmoshpere.
+										</p>
+									</li>
+									<li>
+										<h2 class="major">2. After Effects tracking / <br/>Maya compositing</h2>
+										<video controls width="520">
+											<source src="video/CarEdited1.mp4" type="video/mp4">
+										</video>
+										<p>
+									
+											As explaned before, I again took a video sequence made with my iPhone X, shot in 4k at 24 fps. <br>
+											This timed, I did the compositing in <strong>Maya</strong>. Indeed, after getting a track from After Effects, I created my 3D camera inside Maya and set my video as a video backgound of this camera so I can see my 3D model in front of my video, with the video filling the camera screen. <br/>
+											I wanted to change my car (trading my old Opel to a brand new red Ferrari, isn't it a cool idea...and it will remain just an idea for a bit probably :( ).</br>
+											After placing the Ferrari in the Maya's 3D space, I wanted good reflections of this car (like when I see one...on YouTube :( ) so I used a 360° HDRI landscape as an Arnold skydome, close to the environment of the video. </br>
+											Finally, I did added a green screen behind the car to do Chroma Key on Premiere Pro. 
+											<br>
+										</p>
+									</li>
+								</ul>
 							</article>
 
 						<!-- Contact -->
