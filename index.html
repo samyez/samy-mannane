@@ -87,9 +87,12 @@
 
 							<article id="yozora">
 								<h2 class="major">Yozora demo</h2>
-								<video controls width="520">
-										<source src="video/SneakPeek.mp4" type="video/mp4">
-								</video>
+									<iframe width="560" height="315" 
+										src="https://www.youtube.com/watch?v=hxpUfizrVug" 
+										frameborder="0" 
+										allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+										allowfullscreen>
+									</iframe>
 								<p>Here is probably my biggest personal projects: <strong>Yozora demo.</strong> <br />
 								This is an <strong>Unreal Engine 4 C++ project</strong> I did myself. You can download it and try it yourself from <a href="https://drive.google.com/open?id=1ADCERmMmSG3Tu6TgSYdV6uvYcAzE-iuL">here.</a></p>
 								I have modelled, skinned, textured the main character, written all the game mechanics of the character and AI in C++, setting up a targetting system inspired by Dark Souls / Bloodborne (or even Kingdom Hearts), setting up the Animation Blueprints, work on sounds, agencing the test map level design and all the UI work and bindings.
@@ -228,9 +231,6 @@
 											This is rendered with <strong>Arnold</strong>.
 											<br />
 											<br />
-											<video controls width="520">
-													<source src="video/DeerScene.mp4" type="video/mp4">
-											</video>
 										</p>
 									</li>
 								</ul>
@@ -240,15 +240,61 @@
 							<article id="ae">
 								<ul class="alt">
 									<li>
-										<h2 class="major">1. After Effects tracking / <br/>Unreal Engine 4 compositing </h2>
-										<video controls width="520">
-												<source src="video/AlleyCompositing.mp4" type="video/mp4">
-										</video>
+										<h2 class="major">1. After Effects tracking / <br/>NUKE and Maya compositing</h2>
+											<iframe width="560" height="315" 
+												src="https://www.youtube.com/watch?v=QahL4Lk6mRE" 
+												frameborder="0" 
+												allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+												allowfullscreen>
+											</iframe>
 										<p>
-																				
 											I am a huge cinema fan and my dream has always been to express myself through movie directing. Unfortunately, I can't really do it but as a hobby I tried few things. <br>
 											<br>
 											First, I took a video sequence made with my iPhone X, shot in 4k at 24 fps. <br>
+											In After Effects, I have to do the <strong>camera tracking</strong> which gives me, for each frame of the video, a transform vector of the virtual camera position in a 3D world space. 
+											This tracking is made by generating <strong>points of interest</strong> in each frame, which are usually points where we can observe a heavy change in the pixel environment, giving us a lot of trackable information. 
+											Then, I did the compositing in <strong>Nuke Studio</strong> with 3D environment made in Maya. </br> I also used Maya to add the masks on top of the walking person according to the camera track. </br>
+											Indeed, I made a 3D projection of the video inside of Nuke, I added fake lights (god rays), the 3D models in the background and did the color grading. 
+											</br>You can find more details on the process by scrolling down this page (n°3).
+											<br>
+											<br/>
+											Here is another compositing using the same process.
+											<iframe width="560" height="315" 
+												src="https://www.youtube.com/watch?v=A2iLG6Tj3Yg" 
+												frameborder="0" 
+												allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+												allowfullscreen>
+											</iframe>
+										</p>
+									</li>
+									<li>
+										<h2 class="major">2. After Effects tracking / <br/>Maya compositing</h2>
+											<iframe width="560" height="315" 
+												src="https://www.youtube.com/watch?v=U2c6zvk73aI" 
+												frameborder="0" 
+												allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+												allowfullscreen>
+											</iframe>
+										<p>
+									
+											As explaned before, I again took a video sequence made with my iPhone X, shot in 4k at 24 fps. <br>
+											This timed, I did the compositing in <strong>Maya</strong>. Indeed, after getting a track from After Effects, I created my 3D camera inside Maya and set my video as a video backgound of this camera so I can see my 3D model in front of my video, with the video filling the camera screen. <br/>
+											I wanted to change my car (trading my old Opel to a brand new red Ferrari, isn't it a cool idea...and it will remain just an idea for a bit probably :( ).</br>
+											After placing the Ferrari in the Maya's 3D space, I wanted good reflections of this car (like when I see one...on YouTube :( ) so I used a 360° HDRI landscape as an Arnold skydome, close to the environment of the video. </br>
+											Finally, I did added a green screen behind the car to do Chroma Key on Premiere Pro. 
+											<br>
+										</p>
+									</li>
+									<li>
+										<h2 class="major">3. After Effects tracking / <br/>Unreal Engine 4 compositing </h2>
+											<iframe width="560" height="315" 
+												src="https://www.youtube.com/watch?v=mI168kAKuNs" 
+												frameborder="0" 
+												allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+												allowfullscreen>
+											</iframe>
+										<p>
+																				
 											In After Effects, I have to do the <strong>camera tracking</strong> which gives me, for each frame of the video, a transform vector of the virtual camera position in a 3D world space. 
 											This tracking is made by generating <strong>points of interest</strong> in each frame, which are usually points where we can observe a heavy change in the pixel environment, giving us a lot of trackable information. 
 											I also created locators on points where I wanted to add a 3D object during compositing, so it will match the movement of the video relatively to the distance to camera. <br>
@@ -263,21 +309,6 @@
 											I can now use compositing tools to place my 3D objects and animations inside Unreal and blend them with the video.
 											<br>
 											The final edit is made in Premiere Pro where I can do color correction and color grading to give to each sequence its own atmoshpere.
-										</p>
-									</li>
-									<li>
-										<h2 class="major">2. After Effects tracking / <br/>Maya compositing</h2>
-										<video controls width="520">
-											<source src="video/CarEdited1.mp4" type="video/mp4">
-										</video>
-										<p>
-									
-											As explaned before, I again took a video sequence made with my iPhone X, shot in 4k at 24 fps. <br>
-											This timed, I did the compositing in <strong>Maya</strong>. Indeed, after getting a track from After Effects, I created my 3D camera inside Maya and set my video as a video backgound of this camera so I can see my 3D model in front of my video, with the video filling the camera screen. <br/>
-											I wanted to change my car (trading my old Opel to a brand new red Ferrari, isn't it a cool idea...and it will remain just an idea for a bit probably :( ).</br>
-											After placing the Ferrari in the Maya's 3D space, I wanted good reflections of this car (like when I see one...on YouTube :( ) so I used a 360° HDRI landscape as an Arnold skydome, close to the environment of the video. </br>
-											Finally, I did added a green screen behind the car to do Chroma Key on Premiere Pro. 
-											<br>
 										</p>
 									</li>
 								</ul>
